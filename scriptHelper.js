@@ -3,7 +3,7 @@
 require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    if (name !== "") {
+    if (name !== undefined) {
         let missionTarget = document.getElementById("missionTarget");
         missionTarget.innerHTML = `
         <h2>Mission Destination</h2>
@@ -59,47 +59,19 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
         document.getElementById("launchStatus").style.color = "green";
     }
-    // event.preventDefault();
  }
  
  async function myFetch() {
-    // try {
-    //     const response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error: ${response.status}`);
-    //     }
-    //     const data = await response.json();
-    //     // console.log(data);
-    //     return data;
-    // }   catch (error) {
-    //     console.error(`Could not get planets: ${error}`);
-    // }
      let planetsReturned;
 
      let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
      planetsReturned = await response.json().then( json => {return json});
-    //  planetsReturned = await jsonResponse.then( json => json);
-    //  console.log(planetsReturned);
- 
-    //  planets = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-    //     response.json().then( function(json) {
-    //         console.log(json);
-    //         planetsReturned = json;
-    //     });
-    //  });
-    //  console.log(planetsReturned);
- 
      return planetsReturned;
  }
  
  function pickPlanet(planets) {
     console.log(planets);
     let rando = Math.random();
-    // planets.then((data) => {
-    //     let pick = Math.floor(rando*data.length);
-    //     console.log(data[pick]);
-    //     return data[pick];
-    // });
     let pick = Math.floor(rando*planets.length);
     return planets[pick];
  }

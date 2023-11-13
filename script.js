@@ -1,30 +1,6 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", () => {
-    // let planets = [];
-    // const promise = myFetch();
-    // promise.then((data) => {
-    //     // console.log(data);
-    //     planets = [...data];
-    //     console.log(planets);
-    //     return planets;
-    // });
-    // console.log(planets);
-
-    // console.log(pickPlanet(myFetch()));
-
-    // console.log(myFetch());
-
-    let fetched = myFetch();
-    console.log(typeof fetched);
-    console.log(fetched);
-    let planet = pickPlanet(fetched);
-    // console.log(typeof planet);
-    console.log(planet);
-    // (async () => {
-    // });
-    addDestinationInfo();
-
     let form = document.querySelector("form");
     form.addEventListener("submit", event => {
         
@@ -38,13 +14,16 @@ window.addEventListener("load", () => {
 
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-    let listedPlanetsResponse;
+    let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
         console.log(listedPlanets);
     }).then(function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+        let planet = pickPlanet(listedPlanets);
+        addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
+
     })
     
  });
