@@ -1,9 +1,33 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", () => {
+    // let planets = [];
+    // const promise = myFetch();
+    // promise.then((data) => {
+    //     // console.log(data);
+    //     planets = [...data];
+    //     console.log(planets);
+    //     return planets;
+    // });
+    // console.log(planets);
+
+    // console.log(pickPlanet(myFetch()));
+
+    // console.log(myFetch());
+
+    let fetched = myFetch();
+    console.log(typeof fetched);
+    console.log(fetched);
+    let planet = pickPlanet(fetched);
+    // console.log(typeof planet);
+    console.log(planet);
+    // (async () => {
+    // });
+    addDestinationInfo();
 
     let form = document.querySelector("form");
     form.addEventListener("submit", event => {
+        
         let list = document.getElementById("faultyItems");
         let pilotName = document.querySelector('input[name=pilotName]');
         let copilotName = document.querySelector('input[name=copilotName]');
